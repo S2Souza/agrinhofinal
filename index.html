@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Cadastro de Localização do Vendedor</title>
     <style>
-        /* Aqui virão os estilos (passo 4) */
+       
     </style>
 </head>
 <body>
@@ -42,9 +42,9 @@
 
     <script>
 document.getElementById('location-form').addEventListener('submit', function(event) {
-    event.preventDefault();  // Evita o envio do formulário
+    event.preventDefault(); 
 
-    // Pega os valores inseridos pelo usuário
+    
     var name = document.getElementById('name').value;
     var address = document.getElementById('address').value;
     var mapLink = document.getElementById('map-link').value;
@@ -52,10 +52,10 @@ document.getElementById('location-form').addEventListener('submit', function(eve
     var category = document.getElementById('category').value;
     var email = document.getElementById('email').value;
 
-    // Pega a lista já salva (ou cria uma nova)
+    
     var sellers = JSON.parse(localStorage.getItem('sellers')) || [];
 
-    // Adiciona o novo vendedor
+   
     sellers.push({
         name: name,
         address: address,
@@ -65,10 +65,10 @@ document.getElementById('location-form').addEventListener('submit', function(eve
         email: email
     });
 
-    // Salva de volta no localStorage
+   
     localStorage.setItem('sellers', JSON.stringify(sellers));
 
-    // Exibe as informações inseridas
+   
     var resultDiv = document.getElementById('result');
     resultDiv.innerHTML = `<h3>Informações Cadastradas:</h3>
                             <p><strong>Nome do Vendedor:</strong> ${name}</p>
@@ -78,7 +78,7 @@ document.getElementById('location-form').addEventListener('submit', function(eve
                             <p><strong>Categoria do Produto:</strong> ${category}</p>
                             <p><strong>Email:</strong> ${email}</p>`;
 
-    // Limpa o formulário após a submissão
+    
     this.reset();
 });
     </script>
