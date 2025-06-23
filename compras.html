@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Vendedores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #e7baba;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .seller-card {
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fafafa;
+      transition: box-shadow 0.3s ease;
+    }
+    .seller-card:hover {
+      box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+    }
+    .seller-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .seller-card p {
+      margin: 5px 0;
+      line-height: 1.4;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Lista de Vendedores Cadastrados</h1>
+    
+    <div id="seller-list"></div>
+  </div>
+
+  <script>
+    function renderList() {
+      var sellers = JSON.parse(localStorage.getItem('sellers')) || [];
+      var listDiv = document.getElementById('seller-list');
+      listDiv.innerHTML = '';
+
+      if (sellers.length === 0) {
+        listDiv.innerHTML = '<p>Nenhum vendedor cadastrado.</p>';
+        return;
+      }
+
+      sellers.forEach(function(seller) {
+        var div = document.createElement('div');
+        div.classList.add('seller-card');
+        div.innerHTML = `
+          <h3>${seller.name}</h3>
+          <p><strong>Endereço:</strong> ${seller.address}</p>
+          <p><strong>Localização:</strong> <a href="${seller.mapLink}" target="_blank">${seller.mapLink}</a></p>
+          <p><strong>Telefone:</strong> ${seller.phone}</p>
+          <p><strong>Categoria:</strong> ${seller.category}</p>
+          <p><strong>Email:</strong> ${seller.email}</p>
+        `;
+        listDiv.appendChild(div);
+      });
+    }
+
+    // Chama para renderizar quando carregar a página
+    window.onload = renderList;
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+.botão1 { 
+    background-color: rgb(214, 10, 10);
+    width: 300px;
+    height: 200px;
+    border: none;
+    border-radius: 40px;
+    padding: 15px 30px;
+    font-family: 'Hanalei Fill', cursive !important;
+    font-size: 40px;
+    color: rgb(255, 195, 43);
+
+}
+.botão2 {
+    background-color: rgb(243, 181, 12);
+    width: 300px;
+    height: 200px;
+    border: none;
+    border-radius: 40px;
+    padding: 15px 30px;
+    font-family: 'Hanalei Fill', cursive !important;
+    font-size: 45px;
+    color: rgb(175, 16, 16);
+    
+}
+
+
+
+body {
+    padding: 20px;
+background-color: rgb(247, 234, 161);
+    font-family:  "Patrick Hand", cursive;
+    
+  
+    
+}
+.agrupa { 
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+    margin-top: 40px;
+}
+
+.botão1:hover {
+    background-color: rgb(131, 11, 11);
+    color: darkgoldenrod;
+}
+
+.botão2:hover {
+    background-color: rgb(139, 83, 8);
+    color: rgb(71, 6, 6);
+}
+
+h2 {
+
+    font-family: 'Hanalei Fill', cursive !important;
+    font-size: 60px;
+    color: darkorange;
+    background-color: brown;
+    margin: 30px;
+    text-align: center;
+    border-radius: 30px; }
+
+    p { 
+
+        font-size: xx-large;
+    }
+
+  

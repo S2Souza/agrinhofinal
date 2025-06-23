@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Localização do Vendedor</title>
+    <style>
+        /* Aqui virão os estilos (passo 4) */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Faça seu Cadastro!</h1>
+        <form id="location-form">
+            <label for="name">Nome do Vendedor:</label>
+    <input type="text" id="name" placeholder="Nome do Vendedor" required>
+    
+    <label for="address">Endereço Completo:</label>
+    <input type="text" id="address" placeholder="Ex: Rua X, nº Y, Bairro Z, Cidade, Estado" required>
+    
+    <label for="map-link">Link da Localização (Google Maps):</label>
+    <input type="url" id="map-link" placeholder="Insira o link do Google Maps" required>
+    
+    <label for="phone">Telefone:</label>
+    <input type="text" id="phone" placeholder="Telefone do Vendedor" required>
+    
+    <label for="category">Oque você vende?:</label>
+    <input type="text" id="category" placeholder="Ex: Frutas, Legumes, etc." required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Email do Vendedor" required>
+    
+    <button type="submit">Cadastrar Localização</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+document.getElementById('location-form').addEventListener('submit', function(event) {
+    event.preventDefault();  // Evita o envio do formulário
+
+    // Pega os valores inseridos pelo usuário
+    var name = document.getElementById('name').value;
+    var address = document.getElementById('address').value;
+    var mapLink = document.getElementById('map-link').value;
+    var phone = document.getElementById('phone').value;
+    var category = document.getElementById('category').value;
+    var email = document.getElementById('email').value;
+
+    // Pega a lista já salva (ou cria uma nova)
+    var sellers = JSON.parse(localStorage.getItem('sellers')) || [];
+
+    // Adiciona o novo vendedor
+    sellers.push({
+        name: name,
+        address: address,
+        mapLink: mapLink,
+        phone: phone,
+        category: category,
+        email: email
+    });
+
+    // Salva de volta no localStorage
+    localStorage.setItem('sellers', JSON.stringify(sellers));
+
+    // Exibe as informações inseridas
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `<h3>Informações Cadastradas:</h3>
+                            <p><strong>Nome do Vendedor:</strong> ${name}</p>
+                            <p><strong>Endereço:</strong> ${address}</p>
+                            <p><strong>Link da Localização:</strong> <a href="${mapLink}" target="_blank">${mapLink}</a></p>
+                            <p><strong>Telefone:</strong> ${phone}</p>
+                            <p><strong>Categoria do Produto:</strong> ${category}</p>
+                            <p><strong>Email:</strong> ${email}</p>`;
+
+    // Limpa o formulário após a submissão
+    this.reset();
+});
+    </script>
+
+</body>
+</html>
